@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "iPhone 14 Pro Max",
+    "imageUrl": "https://softliee.com/wp-content/uploads/2022/05/Apple-iPhone-14-Pro.jpg",
+    "price": 2500
+  },
+  {
+    "id": 2,
+    "name": "iPhone 14 Pro",
+    "imageUrl": "https://www.pakmobizone.pk/wp-content/uploads/2022/10/Apple-iPhone-14-Pro-Deep-Purple-1.jpg",
+    "price": 2300
+  },
+  {
+    "id": 3,
+    "name": "iPhone 14 Plus",
+    "imageUrl": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-plus-3.jpg",
+    "price": 2100
+  },
+  {
+    "id": 4,
+    "name": "iPhone 14",
+    "imageUrl": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-3.jpg",
+    "price": 1900
+  },
+  {
+    "id": 5,
+    "name": "iPhone 13 Pro Max",
+    "imageUrl": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-max-01.jpg",
+    "price": 1800
+  },
+  {
+    "id": 6,
+    "name": "iPhone 13 Pro",
+    "imageUrl": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-pro-01.jpg",
+    "price": 1600
+  },
+  {
+    "id": 7,
+    "name": "iPhone 13",
+    "imageUrl": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-01.jpg",
+    "price": 1400
+  },
+  {
+    "id": 8,
+    "name": "iPhone 12 Pro Max",
+    "imageUrl": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-pro-max-1.jpg",
+    "price": 1300
+  },
+  {
+    "id": 9,
+    "name": "iPhone 12 Pro",
+    "imageUrl": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-12-pro-r1.jpg",
+    "price": 1100
+  }
+]
