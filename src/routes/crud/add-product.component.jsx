@@ -11,14 +11,12 @@ import { Box } from "@mui/system";
 import { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
-import { UserContext } from "../../context/user.context";
+import { config } from "../../store/user/user-reducer";
 
 const API = "https://light-crow-kerchief.cyclic.app/api/phones";
 
 function AddProduct() {
   document.title = "Add Phone";
-
-  const { config } = useContext(UserContext);
 
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");

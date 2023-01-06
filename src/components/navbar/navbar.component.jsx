@@ -1,9 +1,9 @@
 import NavbarButton from "./navbar-button/navbar-button.component";
-import { useContext } from "react";
-import { UserContext } from "../../context/user.context";
+import { INITIAL_STATE } from "../../store/user/user-reducer";
 
 const NavBar = () => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser } = INITIAL_STATE;
+  console.log(currentUser);
 
   const signOutHandler = () => {
     localStorage.clear();
@@ -14,7 +14,7 @@ const NavBar = () => {
     <>
       <NavbarButton label="Shop" link="/shop" />
       <NavbarButton label="Contact" link="/contact" />
-      {currentUser.length === 0 ? (
+      {Object.keys(currentUser).length === 0 ? (
         <NavbarButton label="Sign In" link="/sign-in" />
       ) : (
         <NavbarButton label="Sign Out" onClick={signOutHandler} />

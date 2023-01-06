@@ -6,15 +6,16 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-import { useContext } from "react";
-import { UserContext } from "../../context/user.context";
+import { config } from "../../store/user/user-reducer";
+import { setCurrentUser } from "../../store/user/user.action";
+import { useDispatch } from "react-redux";
 
 const theme = createTheme();
 
 const API = "https://light-crow-kerchief.cyclic.app/api/users/updateMe";
 
 const UpdateData = () => {
-  const { setCurrentUser, config } = useContext(UserContext);
+  const dispatch = useDispatch();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);

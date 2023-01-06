@@ -10,8 +10,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-import { useContext } from "react";
-import { UserContext } from "../../context/user.context";
+import { setCurrentToken, setCurrentUser } from "../../store/user/user.action";
+import { useDispatch } from "react-redux";
 
 function Copyright(props) {
   return (
@@ -36,8 +36,7 @@ const theme = createTheme();
 const API = "https://light-crow-kerchief.cyclic.app/api/users/signup";
 
 const SignUp = () => {
-  const { setCurrentUser, setCurrentToken } = useContext(UserContext);
-
+  const dispatch = useDispatch();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -53,11 +52,14 @@ const SignUp = () => {
       await axios.post(API, body).then((res) => {
         console.log(res.data.token);
         console.log(res.data.data);
-        setCurrentUser(res.data.data.user);
-        setCurrentToken(res.data.token);
+        dispatch(setCurrentUser(res.data.data.user));
+        dispatch(setCurrentToken(res.data.token));
         console.log(res.data.data);
+        localStorage.setItem("user", JSON.stringify(res.data.data.user));
+        localStorage.setItem("token", JSON.stringify(res.data.token));
       });
       alert("Account created successfully");
+      window.location.reload();
     } catch (err) {
       alert(err.response.data.message);
     }

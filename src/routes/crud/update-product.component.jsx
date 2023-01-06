@@ -12,13 +12,12 @@ import { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { ProductsContext } from "../../context/products.context";
-import { UserContext } from "../../context/user.context";
+import { config } from "../../store/user/user-reducer";
 
 function UpdateProduct() {
   document.title = "Update Phone";
 
   const { products } = useContext(ProductsContext);
-  const { config } = useContext(UserContext);
 
   const [oldName, setOldName] = useState("");
   const [name, setName] = useState("");

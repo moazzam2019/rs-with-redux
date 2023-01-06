@@ -13,10 +13,11 @@ import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 import { CartContext } from "../../context/cart.context";
 import { UserContext } from "../../context/user.context";
+import { INITIAL_STATE } from "../../store/user/user-reducer";
 
 const Header = () => {
   const { isCartOpen } = useContext(CartContext);
-  const { currentUser } = useContext(UserContext);
+  const { currentUser } = INITIAL_STATE;
   return (
     <Fragment>
       <div className="header-container">

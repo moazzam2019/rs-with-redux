@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 import Home from "./routes/home/home.component";
 import HeaderFooter from "./routes/Header-Footer/header-footer.component";
 import SignIn from "./routes/sign-in/sign-in.component";
@@ -11,9 +12,33 @@ import DeleteProduct from "./routes/crud/delete-product.component";
 import UpdatePassword from "./routes/crud/update-password.component";
 import UpdateData from "./routes/crud/update-data.component";
 import SearchPage from "./routes/search-page/search-page.component";
+import { setCurrentUser, setCurrentToken } from "./store/user/user.action";
+import { useDispatch } from "react-redux";
+import { USER_ACTION_TYPES } from "./store/user/user.types";
 
 const App = () => {
   document.title = "Repair Solutions";
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    // dispatch({
+    //   type: USER_ACTION_TYPES.SET_CURRENT_USER,
+    //   payload: JSON.parse(user),
+    // });
+    // dispatch({
+    //   type: USER_ACTION_TYPES.SET_CURRENT_TOKEN,
+    //   payload: JSON.parse(token),
+    // });
+
+    dispatch(setCurrentUser(JSON.parse(user)));
+    dispatch(setCurrentToken(JSON.parse(token)));
+  }, [dispatch]);
+  // useEffect(() => {
+
+  //   setCurrentToken(JSON.parse(token));
+  // }, []);
   return (
     <Routes>
       <Route path="/" element={<HeaderFooter />}>

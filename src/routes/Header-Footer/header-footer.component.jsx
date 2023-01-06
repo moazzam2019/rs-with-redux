@@ -6,11 +6,11 @@ import Header from "./header.component";
 import Footer from "./footer.component";
 import HeaderMobile from "./header-mobile.component";
 import { useTheme, useMediaQuery } from "@mui/material";
-import { useContext } from "react";
-import { UserContext } from "../../context/user.context";
+import { INITIAL_STATE } from "../../store/user/user-reducer";
 
 const HeaderFooter = () => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser } = INITIAL_STATE;
+  console.log(currentUser);
   const theme = useTheme();
   let matches = useMediaQuery(
     theme.breakpoints.down(currentUser.length !== 0 ? "lg" : "md")
