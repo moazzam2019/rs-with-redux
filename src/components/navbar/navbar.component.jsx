@@ -3,7 +3,6 @@ import { INITIAL_STATE } from "../../store/user/user-reducer";
 
 const NavBar = () => {
   const { currentUser } = INITIAL_STATE;
-  console.log(currentUser);
 
   const signOutHandler = () => {
     localStorage.clear();

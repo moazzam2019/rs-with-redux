@@ -59,7 +59,6 @@ const SignUp = () => {
         localStorage.setItem("token", JSON.stringify(res.data.token));
       });
       alert("Account created successfully");
-      window.location.reload();
     } catch (err) {
       alert(err.response.data.message);
     }

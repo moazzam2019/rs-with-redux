@@ -12,12 +12,11 @@ import SearchBox from "../../components/search-box/search-box.component";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 import { CartContext } from "../../context/cart.context";
-import { UserContext } from "../../context/user.context";
-import { INITIAL_STATE } from "../../store/user/user-reducer";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const { isCartOpen } = useContext(CartContext);
-  const { currentUser } = INITIAL_STATE;
+  const currentUser = useSelector((state) => state.user.currentUser);
   return (
     <Fragment>
       <div className="header-container">
@@ -75,7 +74,7 @@ const Header = () => {
                 className="header-top-item"
                 sx={{ textAlign: "center" }}
               >
-                {Object.keys(currentUser).length > 0 ? (
+                {currentUser ? (
                   <AccountButton
                     label={currentUser.name}
                     buttonOne="Update Data"
@@ -88,7 +87,7 @@ const Header = () => {
                 )}
               </Grid>
               <Grid item lg={2} md={2} className="header-top-item">
-                {currentUser.length !== 0 && currentUser.role === "admin" ? (
+                {currentUser && currentUser.role === "admin" ? (
                   <AccountButton
                     label="Admin Panel"
                     buttonOne="Add phone"

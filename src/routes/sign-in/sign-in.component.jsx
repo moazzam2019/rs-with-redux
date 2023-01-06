@@ -1,24 +1,16 @@
 import SignUp from "./sign-up.component";
 import { Grid } from "@mui/material";
 import SignInBox from "./sign-in-box.component";
-import { useNavigate } from "react-router-dom";
-import { INITIAL_STATE } from "../../store/user/user-reducer";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const SignIn = () => {
   document.title = "Sign in/Sign up";
-  const { currentUser } = INITIAL_STATE;
-  const navigate = useNavigate();
+  const currentUser = useSelector((state) => state.user.currentUser);
   console.log(currentUser);
-  console.log(Object.keys(currentUser).length !== 0);
-  useEffect(() => {
-    if (Object.keys(currentUser).length !== 0) {
-      navigate("../");
-    }
-  }, [currentUser]);
-  // if (Object.keys(currentUser).length !== 0) {
-  //   navigate("../");
-  // }
+  if (currentUser) {
+    window.location.replace("../");
+  }
+
   return (
     <div>
       <Grid container>

@@ -6,14 +6,13 @@ import Header from "./header.component";
 import Footer from "./footer.component";
 import HeaderMobile from "./header-mobile.component";
 import { useTheme, useMediaQuery } from "@mui/material";
-import { INITIAL_STATE } from "../../store/user/user-reducer";
+import { useSelector } from "react-redux";
 
 const HeaderFooter = () => {
-  const { currentUser } = INITIAL_STATE;
-  console.log(currentUser);
+  const currentUser = useSelector((state) => state.user.currentUser);
   const theme = useTheme();
   let matches = useMediaQuery(
-    theme.breakpoints.down(currentUser.length !== 0 ? "lg" : "md")
+    theme.breakpoints.down(currentUser ? "lg" : "md")
   );
   return (
     <Fragment>

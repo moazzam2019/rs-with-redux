@@ -67,7 +67,6 @@ const SignInBox = () => {
         // console.log(JSON.parse(localStorage.data));
       });
       alert("Account logged in successfully");
-      window.location.reload();
       console.log(Cookies.get("jwt"));
     } catch (err) {
       alert(err.response.data.message);

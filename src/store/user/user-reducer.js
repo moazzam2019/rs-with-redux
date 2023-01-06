@@ -2,12 +2,10 @@ import { USER_ACTION_TYPES } from "./user.types";
 
 const getInitialUser = () => {
   const user = localStorage.getItem("user");
-  console.log(user);
   return user ? JSON.parse(user) : {};
 };
 const getInitialtoken = () => {
   const token = localStorage.getItem("token");
-  console.log(token);
   return token ? JSON.parse(token) : "";
 };
 // the actual values that we want to access
@@ -20,10 +18,7 @@ const bearerToken = "Bearer " + INITIAL_STATE.token;
 export const config = { headers: { authorization: bearerToken } };
 
 export const userReducer = (state = INITIAL_STATE, action) => {
-  console.log("dispatched");
-  console.log(action);
   const { type, payload } = action;
-  console.log(state.currentUser);
 
   // useEffect(() => {
   //   localStorage.setItem("user", JSON.stringify(currentUser));

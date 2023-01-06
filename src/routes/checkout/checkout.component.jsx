@@ -6,14 +6,14 @@ import { useEffect } from "react";
 import axios from "axios";
 import StripeCheckout from "react-stripe-checkout";
 import Button from "../../components/button/button.component";
-import { UserContext } from "../../context/user.context";
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
   useEffect(() => {
     document.title = "Checkout";
   });
   const { cartItems, cartTotal } = useContext(CartContext);
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector((state) => state.user.currentUser);
 
   // Stripe Payment
 
@@ -66,7 +66,7 @@ const Checkout = () => {
         <CheckoutItem key={cartItem._id} cartItem={cartItem} />
       ))}
       <div className="total">TOTAL: ${cartTotal}</div>
-      {cartTotal > 0 && currentUser.length !== 0 ? (
+      {cartTotal > 0 && currentUser ? (
         <StripeCheckout
           name="Repair Solutions"
           image="https://avatars.githubusercontent.com/u/1486366?v=4"

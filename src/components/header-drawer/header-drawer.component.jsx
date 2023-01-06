@@ -6,9 +6,9 @@ import Divider from "@mui/material/Divider";
 import MenuIcon from "@mui/icons-material/Menu";
 import NavbarButton from "../navbar/navbar-button/navbar-button.component";
 import { useContext } from "react";
-import { UserContext } from "../../context/user.context";
 import { Fragment } from "react";
 import "./header-drawer.styles.scss";
+import { useSelector } from "react-redux";
 
 const signOutHandler = () => {
   localStorage.clear();
@@ -16,7 +16,7 @@ const signOutHandler = () => {
 };
 
 export default function SwipeableTemporaryDrawer() {
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useSelector((state) => state.user.currentUser);
   const [state, setState] = React.useState({
     left: false,
   });
@@ -44,13 +44,13 @@ export default function SwipeableTemporaryDrawer() {
         <NavbarButton label="Home" link="../" />
         <NavbarButton label="Shop" link="/shop" />
         <NavbarButton label="Contact" link="/contact" />
-        {currentUser.length === 0 ? (
-          <NavbarButton label="Sign In" link="/sign-in" />
-        ) : (
+        {currentUser ? (
           <NavbarButton label="Sign Out" onClick={signOutHandler} />
+        ) : (
+          <NavbarButton label="Sign In" link="/sign-in" />
         )}
       </div>
-      {Object.keys(currentUser).length > 0 ? (
+      {currentUser ? (
         <>
           <Divider />
           <h3 style={{ textAlign: "center" }}>User Panel</h3>
@@ -64,7 +64,7 @@ export default function SwipeableTemporaryDrawer() {
         <div></div>
       )}
 
-      {currentUser.length !== 0 && currentUser.role === "admin" ? (
+      {currentUser && currentUser.role === "admin" ? (
         <>
           {" "}
           <Divider />
