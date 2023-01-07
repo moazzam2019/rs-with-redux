@@ -43,7 +43,7 @@ const Category = () => {
               .slice(0)
               .reverse()
               .map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard key={product._id} product={product} />
               ))}
           </div>{" "}
         </Fragment>

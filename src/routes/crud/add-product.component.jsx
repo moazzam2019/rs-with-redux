@@ -10,12 +10,12 @@ import {
 import { Box } from "@mui/system";
 import { useState } from "react";
 import axios from "axios";
-import { useContext } from "react";
-import { config } from "../../store/user/user-reducer";
+import { useSelector } from "react-redux";
 
 const API = "https://light-crow-kerchief.cyclic.app/api/phones";
 
 function AddProduct() {
+  const config = useSelector((state) => state.user.config);
   document.title = "Add Phone";
 
   const [name, setName] = useState("");

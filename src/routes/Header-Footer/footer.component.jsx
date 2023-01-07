@@ -38,7 +38,7 @@ const Footer = () => {
                   <span>info@repairsolutions.dk</span>{" "}
                 </li>
                 <li>
-                  <i class="sp-map-marker"></i>
+                  <i className="sp-map-marker"></i>
                   <span>777/ab Rampura Bonosri</span>
                   <span>North DC-3050 USA.</span>
                 </li>
@@ -66,7 +66,7 @@ const Footer = () => {
             </Grid>
             <Grid item xs={12} sm={6} lg={3} md={4}>
               <h2>Subscribe to news</h2>
-              <form class="f-subscribe-form" action="#">
+              <form className="f-subscribe-form" action="#">
                 <span>
                   <input
                     placeholder="Your e-mail"
@@ -105,7 +105,7 @@ const Footer = () => {
       Footer Bottom  
       
       */}
-      <div class="copyright">
+      <div className="copyright">
         <Container maxWidth="lg">
           <Grid container spacing={2}>
             <Grid item xs={12} lg={9}>

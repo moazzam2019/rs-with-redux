@@ -1,22 +1,25 @@
 import NavbarButton from "./navbar-button/navbar-button.component";
-import { INITIAL_STATE } from "../../store/user/user-reducer";
+import { useSelector } from "react-redux";
+import { setCurrentToken, setCurrentUser } from "../../store/user/user.action";
+import { useDispatch } from "react-redux";
 
 const NavBar = () => {
-  const { currentUser } = INITIAL_STATE;
-
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
   const signOutHandler = () => {
     localStorage.clear();
-    window.location.replace("../");
+    dispatch(setCurrentToken(""));
+    dispatch(setCurrentUser(null));
   };
 
   return (
     <>
       <NavbarButton label="Shop" link="/shop" />
       <NavbarButton label="Contact" link="/contact" />
-      {Object.keys(currentUser).length === 0 ? (
+      {!currentUser ? (
         <NavbarButton label="Sign In" link="/sign-in" />
       ) : (
-        <NavbarButton label="Sign Out" onClick={signOutHandler} />
+        <NavbarButton label="Sign Out" onClick={signOutHandler} link="../" />
       )}
     </>
   );

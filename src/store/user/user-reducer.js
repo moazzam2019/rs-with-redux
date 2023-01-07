@@ -13,9 +13,11 @@ const getInitialtoken = () => {
 export const INITIAL_STATE = {
   currentUser: getInitialUser(),
   token: getInitialtoken(),
+  bearerToken: "",
+  config: {},
 };
-const bearerToken = "Bearer " + INITIAL_STATE.token;
-export const config = { headers: { authorization: bearerToken } };
+// const bearerToken = "Bearer " + INITIAL_STATE.token;
+// export const config = { headers: { authorization: "bearerToken" } };
 
 export const userReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
@@ -37,6 +39,8 @@ export const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         token: payload,
+        bearerToken: "Bearer " + state.token,
+        config: { headers: { authorization: state.bearerToken } },
       };
     default:
       return state;

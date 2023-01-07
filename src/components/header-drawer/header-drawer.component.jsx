@@ -8,14 +8,19 @@ import NavbarButton from "../navbar/navbar-button/navbar-button.component";
 import { Fragment } from "react";
 import "./header-drawer.styles.scss";
 import { useSelector } from "react-redux";
-
-const signOutHandler = () => {
-  localStorage.clear();
-  window.location.replace("../");
-};
+import { setCurrentToken, setCurrentUser } from "../../store/user/user.action";
+import { useDispatch } from "react-redux";
 
 export default function SwipeableTemporaryDrawer() {
   const currentUser = useSelector((state) => state.user.currentUser);
+  const dispatch = useDispatch();
+
+  const signOutHandler = () => {
+    localStorage.clear();
+    dispatch(setCurrentToken(""));
+    dispatch(setCurrentUser(null));
+  };
+
   const [state, setState] = React.useState({
     left: false,
   });
@@ -44,7 +49,7 @@ export default function SwipeableTemporaryDrawer() {
         <NavbarButton label="Shop" link="/shop" />
         <NavbarButton label="Contact" link="/contact" />
         {currentUser ? (
-          <NavbarButton label="Sign Out" onClick={signOutHandler} />
+          <NavbarButton label="Sign Out" onClick={signOutHandler} link="../" />
         ) : (
           <NavbarButton label="Sign In" link="/sign-in" />
         )}

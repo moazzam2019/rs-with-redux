@@ -6,13 +6,15 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-import { config } from "../../store/user/user-reducer";
+import { useSelector } from "react-redux";
 
 const theme = createTheme();
 
 const API = "https://light-crow-kerchief.cyclic.app/api/users/updateMyPassword";
 
 const UpdatePassword = () => {
+  const config = useSelector((state) => state.user.config);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
