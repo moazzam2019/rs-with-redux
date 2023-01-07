@@ -9,14 +9,15 @@ import {
 import { Box } from "@mui/system";
 import { useState } from "react";
 import axios from "axios";
-import { useContext } from "react";
-import { ProductsContext } from "../../context/products.context";
+
 import { config } from "../../store/user/user-reducer";
+import { useSelector } from "react-redux";
+import { selectProducts } from "../../store/products/products.selector";
 
 function DeleteProduct() {
   document.title = "Delete Phone";
 
-  const { products } = useContext(ProductsContext);
+  const products = useSelector(selectProducts);
 
   const [name, setName] = useState("");
 

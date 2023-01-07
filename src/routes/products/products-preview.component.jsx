@@ -1,13 +1,13 @@
-import { useContext } from "react";
-import { ProductsContext } from "../../context/products.context";
 import ProductCard from "../../components/product-card/product-card.component";
 import { Fragment } from "react";
 import "../category/category.styles.scss";
+import { useSelector } from "react-redux";
+import { selectProducts } from "../../store/products/products.selector";
 // styles used from category component with same class name
 
 const ProductsPreview = () => {
   document.title = "Shop";
-  const { products } = useContext(ProductsContext);
+  const products = useSelector(selectProducts);
   return (
     <Fragment>
       {products.length > 0 ? (

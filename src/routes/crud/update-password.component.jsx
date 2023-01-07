@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
-import { useContext } from "react";
 import { config } from "../../store/user/user-reducer";
 
 const theme = createTheme();
@@ -29,8 +28,8 @@ const UpdatePassword = () => {
       await axios.patch(API, body, config).then((res) => {
         alert("Data Updated Successfully, Please log in again!");
         localStorage.clear();
-        window.location.replace("/sign-in");
       });
+      window.location.replace("/sign-in");
     } catch (err) {
       if (err.response.data.message === "jwt expired") {
         alert("Session expired, Please log in again.");

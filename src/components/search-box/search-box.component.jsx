@@ -2,10 +2,10 @@ import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { useContext } from "react";
-import { ProductsContext } from "../../context/products.context";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setSearchProducts } from "../../store/products/products.action";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -49,7 +49,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchBox() {
   const navigate = useNavigate();
-  const { setSearchProducts } = useContext(ProductsContext);
+  const dispatch = useDispatch();
+
+  // const { setSearchProducts } = useContext(ProductsContext);
+
   const [search, setSearch] = useState("");
 
   const changeEvent = (e) => {
@@ -59,8 +62,8 @@ export default function SearchBox() {
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       console.log("do validate");
-      navigate("/search-page");
-      setSearchProducts(search);
+      navigate("/shop/search-page");
+      dispatch(setSearchProducts(search));
     }
   };
 

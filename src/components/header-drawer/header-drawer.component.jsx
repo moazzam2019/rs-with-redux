@@ -5,7 +5,6 @@ import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Divider from "@mui/material/Divider";
 import MenuIcon from "@mui/icons-material/Menu";
 import NavbarButton from "../navbar/navbar-button/navbar-button.component";
-import { useContext } from "react";
 import { Fragment } from "react";
 import "./header-drawer.styles.scss";
 import { useSelector } from "react-redux";
@@ -72,8 +71,8 @@ export default function SwipeableTemporaryDrawer() {
           <Divider />
           <div className="appbar-links">
             <NavbarButton label="Add Phone" link="/add-product" />
-            <NavbarButton label="Update Phone" link="/update-product" />
-            <NavbarButton label="Delete Phone" link="/delete-product" />
+            <NavbarButton label="Update Phone" link="/shop/update-product" />
+            <NavbarButton label="Delete Phone" link="/shop/delete-product" />
           </div>
         </>
       ) : (

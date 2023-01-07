@@ -1,12 +1,17 @@
-import { useContext } from "react";
-import { ProductsContext } from "../../context/products.context";
 import ProductCard from "../../components/product-card/product-card.component";
 import { Fragment } from "react";
 import "../category/category.styles.scss";
+import { useSelector } from "react-redux";
+import {
+  selectProducts,
+  selectSearchProducts,
+} from "../../store/products/products.selector";
 // styles used from category component with same class name
 
 const SearchPage = () => {
-  const { products, searchProducts } = useContext(ProductsContext);
+  const products = useSelector(selectProducts);
+  // const { searchProducts } = useContext(ProductsContext);
+  const searchProducts = useSelector(selectSearchProducts);
 
   document.title = `Search Results for "${searchProducts}"`;
   const newFilteredProducts = products.filter((product) => {

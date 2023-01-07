@@ -94,8 +94,8 @@ const Header = () => {
                     buttonTwo="Update Phone"
                     buttonThree="Delete Phone"
                     linkOne="/add-product"
-                    linkTwo="/update-product"
-                    linkThree="/delete-product"
+                    linkTwo="/shop/update-product"
+                    linkThree="/shop/delete-product"
                   />
                 ) : (
                   <Fragment></Fragment>

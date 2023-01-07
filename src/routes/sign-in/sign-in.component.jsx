@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 const SignIn = () => {
   document.title = "Sign in/Sign up";
   const currentUser = useSelector((state) => state.user.currentUser);
-  console.log(currentUser);
-  if (currentUser) {
+  if (currentUser && Object.keys(currentUser).length !== 0) {
     window.location.replace("../");
   }
 

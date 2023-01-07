@@ -27,7 +27,7 @@ const UpdateData = () => {
     try {
       await axios.patch(API, body, config).then((res) => {
         let user = res.data.data.user;
-        setCurrentUser(user);
+        dispatch(setCurrentUser(user));
         alert("Data Updated Successfully");
       });
     } catch (err) {

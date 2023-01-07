@@ -1,9 +1,9 @@
-import { useContext, useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 
 import ProductCard from "../../components/product-card/product-card.component";
-
-import { ProductsContext } from "../../context/products.context";
+import { useSelector } from "react-redux";
+import { selectProducts } from "../../store/products/products.selector";
 
 import "./category.styles.scss";
 
@@ -12,7 +12,7 @@ const Category = () => {
   const categoryMain = category.charAt(0).toUpperCase() + category.slice(1);
   document.title = categoryMain;
 
-  const { products } = useContext(ProductsContext);
+  const products = useSelector(selectProducts);
   const [productsNew, setProductsNew] = useState(products);
   // const phone = "iPhone 14 Pro Max";
 

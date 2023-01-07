@@ -100,7 +100,7 @@ export default function AccountButton({
         </Link>
         <Link to={linkTwo}>
           <MenuItem onClick={handleClose} disableRipple>
-            {linkTwo === "/update-product" ? <EditIcon /> : <div></div>}{" "}
+            {linkTwo === "/shop/update-product" ? <EditIcon /> : <div></div>}{" "}
             {buttonTwo}
           </MenuItem>
         </Link>
